@@ -2,11 +2,7 @@ function getComputerChoice() {
   const possibleChoices = ["rock", "paper", "scissors"];
   let possibleChoicesIndex = Math.floor(Math.random() * possibleChoices.length);
   return possibleChoices[possibleChoicesIndex];
-}
-
-function getPlayerChoice(){
-  return prompt("Rock Paper Scissors");
-}
+};
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection !== computerSelection) {
@@ -35,27 +31,10 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  for (var i = 0; i < 5; i++) {
-    let roundOutcome = playRound(getPlayerChoice(), getComputerChoice());
-    if (roundOutcome === "T") {
-      roundOutcome = playRound(getPlayerChoice(), getComputerChoice());
-      if (roundOutcome === "W") {
-        playerScore += 1;
-      } else if (roundOutcome === "L") {
-        computerScore += 1;
-      }
-    } else {
-      if (roundOutcome === "W") {
-        playerScore += 1;
-      } else if (roundOutcome === "L"){
-        computerScore += 1;
-      }
-    }
-  }
-  console.log(playerScore + " " + computerScore);
-}
+const rock = document.querySelector("#rock-button");
+const paper = document.querySelector("#paper-button");
+const scissors = document.querySelector("#scissors-button");
 
-game();
+rock.addEventListener("click", () => playRound("rock", getComputerChoice()));
+paper.addEventListener("click", () => playRound("paper", getComputerChoice()));
+scissors.addEventListener("click", () => playRound("scissors", getComputerChoice()));
